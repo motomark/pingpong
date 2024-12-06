@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pong
+  name: pong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pong
+  template:
+    metadata:
+      labels:
+        app: pong
+    spec:
+      containers:
+      - image: motomark/pong
+        name: pong
+        ports: 
+        - containerPort: 9900
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: pong-service
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: pong
+  ports:
+  - name: http
+    port: 9900
+    protocol: TCP
+    targetPort: 9900

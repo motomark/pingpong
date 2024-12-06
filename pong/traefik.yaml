@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pong-ing-traefik
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: "pingpong.local"
+    http:
+      paths:
+      - path: /pong
+        pathType: Prefix
+        backend:
+          service:
+            name: pong-service
+            port:
+              number: 9900

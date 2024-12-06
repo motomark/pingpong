@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ping-ing-traefik
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  # kubectl get svc -n kube-system | grep traefik - and add on eof the ip addresses of one of the nodes to /etc/hosts
+  - host: "pingpong.local"
+    http:
+      paths:
+      - path: /ping
+        pathType: Prefix
+        backend:
+          service:
+            name: ping-service
+            port:
+              number: 9800
+      # Only Need one Ingress for Both services. Specify both paths and route to separate services.
+      - path: /pong
+        pathType: Prefix
+        backend:
+          service:
+            name: pong-service
+            port:
+              number: 9900
