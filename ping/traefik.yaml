@@ -23,6 +23,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: pong-service
+            name: ping-service
             port:
-              number: 9900
+              number: 9800
