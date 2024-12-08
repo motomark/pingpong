@@ -14,7 +14,6 @@ spec:
       labels:
         app: ping
     spec:
-      #serviceAccountName: spring-cloud-kubernetes
       containers:
       - image: motomark/ping
         name: ping
@@ -27,7 +26,8 @@ metadata:
   name: ping-service
   namespace: default
 spec:
-  type: ClusterIP
+  type: LoadBalancer
+  # type: ClusterIP
   selector:
     app: ping
   ports:
@@ -35,6 +35,9 @@ spec:
     port: 9800
     protocol: TCP
     targetPort: 9800
+# Added
+status:
+  loadBalancer: {}
 
 # ---
 # apiVersion: v1

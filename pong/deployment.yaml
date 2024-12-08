@@ -26,7 +26,8 @@ metadata:
   name: pong-service
   namespace: default
 spec:
-  type: ClusterIP
+  type: LoadBalancer
+  # type: ClusterIP
   selector:
     app: pong
   ports:
@@ -34,3 +35,6 @@ spec:
     port: 9900
     protocol: TCP
     targetPort: 9900
+# Added
+status:
+  loadBalancer: {}
