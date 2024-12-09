@@ -11,7 +11,4 @@ public class PongController {
         return "This is Pong!";
     }
 
-    
-
-
 }

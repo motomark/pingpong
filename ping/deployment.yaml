@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: ping
   labels:
     app: ping
-  name: ping
 spec:
   replicas: 1
   selector:
@@ -27,7 +27,6 @@ metadata:
   namespace: default
 spec:
   type: LoadBalancer
-  # type: ClusterIP
   selector:
     app: ping
   ports:
@@ -35,22 +34,5 @@ spec:
     port: 9800
     protocol: TCP
     targetPort: 9800
-# Added
 status:
   loadBalancer: {}
-
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: ping-entrypoint
-#   namespace: default
-# spec:
-#   type: NodePort
-#   selector:
-#     app: ping
-#   ports:
-#     - port: 9800
-#       targetPort: 9800
-#       nodePort: 30002
-

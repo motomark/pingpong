@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: pong
   labels:
     app: pong
-  name: pong
 spec:
   replicas: 1
   selector:
@@ -18,7 +18,7 @@ spec:
       - image: motomark/pong
         name: pong
         ports: 
-        - containerPort: 9900
+        - containerPort: 9700
 ---
 kind: Service
 apiVersion: v1
@@ -26,15 +26,11 @@ metadata:
   name: pong-service
   namespace: default
 spec:
-  type: LoadBalancer
-  # type: ClusterIP
+  type: ClusterIP
   selector:
     app: pong
   ports:
   - name: http
-    port: 9900
+    port: 9700
     protocol: TCP
-    targetPort: 9900
-# Added
-status:
-  loadBalancer: {}
+    targetPort: 9700
