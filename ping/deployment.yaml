@@ -19,6 +19,17 @@ spec:
         name: ping
         ports: 
         - containerPort: 9800
+        volumeMounts:
+          - name: application-config 
+            mountPath: "/config"
+            readOnly: true
+      volumes:
+      - name: application-config
+        configMap:
+          name: spring-app-config 
+          items:
+          - key: application.properties 
+            path: application.properties
 ---
 kind: Service
 apiVersion: v1
