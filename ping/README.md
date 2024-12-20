@@ -26,7 +26,7 @@ sudo telepresence intercept ping --port 9800 --env-file ~/git/pingpong/ping/ping
 
 How to run a Spring Boot deployment with a application-properties stored in a ConfigMap merged with the version packaged in the jar. To do this we have to first store the file in the Config Map by using the configmap.yaml:
 
-```bash
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -51,7 +51,7 @@ kubectl apply -f configmap.yaml
 Then reference a Volume mapping for the Pod with the application.properties file from the ConfigMap copied to the /config mount path. 
 On startup Spring Boot will first look for application.properties next to the jar file or under /config and merge this with the internal jar properties combined.
 
-```bash
+```yaml
 
 volumeMounts:
         - name: application-config 
