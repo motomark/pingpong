@@ -26,7 +26,7 @@ spec:
       volumes:
       - name: application-config
         configMap:
-          name: spring-app-config 
+          name: ping-app-config 
           items:
           - key: application.properties 
             path: application.properties
