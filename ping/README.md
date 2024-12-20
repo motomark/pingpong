@@ -99,7 +99,7 @@ ref: https://medium.com/globant/kubernetes-microservices-discovery-2dd754712606
 
 By adding the following dependencies we can now 'discover' the pong-service by its name and don't have to worry about hostname and port in the Feign client call. See PongClient.java
 
-```bash
+```xml
         <!-- Kubernetes Discovery for finding the Pong service by name. -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
