@@ -7,7 +7,6 @@ data:
   application.properties: |
     spring.application.name=ping
     server.port=9800
-    # spring.cloud.kubernetes.loadbalancer.mode=service
     spring.config.import=optional:configserver
     spring.cloud.config.enabled=false
     ping.message=Hello K3s!
